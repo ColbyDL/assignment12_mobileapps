@@ -25,7 +25,7 @@ public class SelectDiscountFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private ArrayList<String> discountAmounts = new ArrayList<String>(Arrays.asList( "10%", "15%", "18%", "Custom" ) );
+    private ArrayList<String> discountAmounts = new ArrayList<String>(Arrays.asList( "10", "15", "18", "Custom" ) );
 
     FragmentSelectDiscountBinding binding;
 

@@ -32,6 +32,11 @@ public class BillsFragment extends Fragment {
     BillsAdapter adapter;
 
 
+    public void updateBillsList(Bill bill) {
+        mBills.remove(bill);
+        adapter.notifyDataSetChanged();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBillsBinding.inflate(inflater, container, false);

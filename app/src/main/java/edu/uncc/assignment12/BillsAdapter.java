@@ -82,8 +82,13 @@ public class BillsAdapter extends RecyclerView.Adapter<BillsAdapter.BillsViewHol
                 holder.mListener.trashCan(bill);
             }
         });
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.mListener.goToBillSummary(bill);
+            }
 
-
+        });
     }
 
     @Override

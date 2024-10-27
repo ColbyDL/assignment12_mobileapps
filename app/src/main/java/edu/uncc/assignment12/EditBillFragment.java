@@ -25,6 +25,8 @@ public class EditBillFragment extends Fragment {
     String selectedCategory;
     Date selectedBillDate;
     Double selectedDiscount;
+    String selectedName;
+    Double selectedAmount;
 
     public EditBillFragment() {
         // Required empty public constructor
@@ -47,6 +49,8 @@ public class EditBillFragment extends Fragment {
             selectedBillDate = mBill.getBillDate();
             selectedCategory = mBill.getCategory();
             selectedDiscount = mBill.getDiscount();
+            selectedName = mBill.getName();
+            selectedAmount = mBill.getAmount();
         }
     }
 
@@ -91,6 +95,18 @@ public class EditBillFragment extends Fragment {
             binding.textViewDiscount.setText("N/A");
         } else {
             binding.textViewDiscount.setText(selectedDiscount.toString() + "%");
+        }
+
+        if (selectedName == null){
+            binding.editTextName.setText("");
+        } else {
+            binding.editTextName.setText(selectedName);
+        }
+
+        if (selectedAmount == null){
+            binding.editTextBill.setText("");
+        } else {
+            binding.editTextBill.setText(selectedAmount.toString());
         }
 
         binding.buttonBillDate.setOnClickListener(new View.OnClickListener() {

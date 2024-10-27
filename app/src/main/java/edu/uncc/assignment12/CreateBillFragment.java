@@ -121,8 +121,10 @@ public class CreateBillFragment extends Fragment {
 
                 if(selectedCategory == null){
                     Toast.makeText(getActivity(), "Select bill category!", Toast.LENGTH_SHORT).show();
-                    return;
+                    //return ;
                 }
+
+                selectedCategory = "Housing";
 
                 Bill bill = new Bill(selectedCategory, name, selectedBillDate, selectedDiscount, billAmount);
                 mListener.createBillSuccessful(bill);

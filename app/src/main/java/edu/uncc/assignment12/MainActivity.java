@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     @Override
     public void trashCan(Bill bill) {
         mBills.remove(bill);
+        BillsFragment billsFragment = (BillsFragment) getSupportFragmentManager().findFragmentByTag("bills-fragment");
+        billsFragment.updateBillsList(bill);
+
     }
 
     @Override
