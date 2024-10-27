@@ -21,6 +21,10 @@ import edu.uncc.assignment12.databinding.FragmentSelectDiscountBinding;
 
 
 public class SelectDiscountFragment extends Fragment {
+
+
+
+
     public SelectDiscountFragment() {
         // Required empty public constructor
     }
@@ -94,7 +98,7 @@ public class SelectDiscountFragment extends Fragment {
     }
 
     interface SelectDiscountListener {
-        void onDiscountSelected(double discount);
+        void onDiscountSelected(String discount);
         void onCancelSelectDiscount();
     }
 }

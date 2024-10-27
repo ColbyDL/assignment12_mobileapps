@@ -46,6 +46,9 @@ public class DiscountRecyclerViewAdapter extends RecyclerView.Adapter<DiscountRe
         TextView textView;
         SeekBar seekBar;
         String mDiscount;
+        View rootView;
+        SelectDiscountFragment selectDiscountFragment;
+
 
         public DiscountViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,14 +56,16 @@ public class DiscountRecyclerViewAdapter extends RecyclerView.Adapter<DiscountRe
             textView = itemView.findViewById(android.R.id.text1);
             seekBar = itemView.findViewById(R.id.seekBar);
             mListener = (SelectDiscountFragment.SelectDiscountListener) itemView.getContext();
+            rootView = itemView;
+            selectDiscountFragment = new SelectDiscountFragment();
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (mDiscount.equalsIgnoreCase("custom")) {
-                        mDiscount = String.valueOf(seekBar.getProgress());
-                    }
-                    mListener.onDiscountSelected(Double.valueOf(mDiscount));
+
+                    mListener.onDiscountSelected(mDiscount);
                 }
             });
 

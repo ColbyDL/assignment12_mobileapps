@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     @Override
     public void gotoSelectDiscount() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main, new SelectDiscountFragment())
+                .replace(R.id.main, new SelectDiscountFragment(), "select-discount-fragment")
                 .addToBackStack(null)
                 .commit();
     }
@@ -152,7 +152,15 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     }
 
     @Override
-    public void onDiscountSelected(double discount) {
+    public void onDiscountSelected(String sdiscount) {
+        SelectDiscountFragment selectDiscountFragment = (SelectDiscountFragment) getSupportFragmentManager().findFragmentByTag("select-discount-fragment");
+        double discount = 0;
+        if(sdiscount.equalsIgnoreCase("Custom")){
+            discount = (double) selectDiscountFragment.binding.seekBar.getProgress();
+        } else {
+            discount = Double.parseDouble(sdiscount);
+        }
+
         CreateBillFragment createBillFragment = (CreateBillFragment) getSupportFragmentManager().findFragmentByTag("create-bill-fragment");
         if(createBillFragment != null){
             createBillFragment.setSelectedDiscount(discount);
