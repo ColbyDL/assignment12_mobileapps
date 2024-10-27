@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import edu.uncc.assignment12.databinding.FragmentBillsBinding;
 
@@ -28,6 +29,8 @@ public class BillsFragment extends Fragment {
 
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
+    BillsAdapter adapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class BillsFragment extends Fragment {
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
+        adapter = new BillsAdapter(mBills);
+        recyclerView.setAdapter(adapter);
 
 
 
@@ -85,5 +90,6 @@ public class BillsFragment extends Fragment {
         ArrayList<Bill> getAllBills();
         void gotoCreateBill();
         void clearAllBills();
+        void trashCan(Bill bill);
     }
 }

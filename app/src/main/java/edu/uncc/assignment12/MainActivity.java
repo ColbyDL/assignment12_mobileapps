@@ -68,6 +68,11 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     }
 
     @Override
+    public void trashCan(Bill bill) {
+        mBills.remove(bill);
+    }
+
+    @Override
     public void deleteBill(Bill bill) {
         mBills.remove(bill);
         getSupportFragmentManager().popBackStack();
