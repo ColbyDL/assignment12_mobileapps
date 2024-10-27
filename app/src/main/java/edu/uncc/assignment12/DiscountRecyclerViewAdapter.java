@@ -30,7 +30,7 @@ public class DiscountRecyclerViewAdapter extends RecyclerView.Adapter<DiscountRe
     public void onBindViewHolder(@NonNull DiscountViewHolder holder, int position) {
         String mDiscount = discountAmounts.get( position );
 
-        holder.textView.setText( mDiscount );
+        holder.textView.setText( mDiscount + "%" );
         holder.mDiscount = mDiscount;
 
     }
