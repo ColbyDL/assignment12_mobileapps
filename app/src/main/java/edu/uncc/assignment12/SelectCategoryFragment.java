@@ -6,23 +6,31 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import edu.uncc.assignment12.databinding.FragmentSelectCategoryBinding;
 
 
 public class SelectCategoryFragment extends Fragment {
 
-    String[] mCategories = {"Housing", "Transportation", "Food", "Health", "Other"};
+    private ArrayList<String> mCategories = new ArrayList<String>(Arrays.asList( "Housing", "Transportation", "Food", "Health", "Other" ) );
 
     public SelectCategoryFragment() {
         // Required empty public constructor
     }
 
     FragmentSelectCategoryBinding binding;
+    RecyclerView recyclerView;
+    LinearLayoutManager layoutManager;
+    CategoryRecyclerViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +41,17 @@ public class SelectCategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = binding.recyclerView;
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new CategoryRecyclerViewAdapter( mCategories );
+
+        recyclerView.setAdapter( adapter );
+
         binding.buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
